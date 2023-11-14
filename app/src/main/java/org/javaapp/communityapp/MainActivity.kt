@@ -22,8 +22,15 @@ class MainActivity : AppCompatActivity() {
     fun fragmentController(name : String, add : Boolean, animate : Boolean) {
         when(name) {
             "login" -> {
-                currentFragment = LoginFragment()
+                currentFragment = LoginFragment() // 로그인 프래그먼트 생성
             }
+            "join" -> {
+                currentFragment = JoinFragment()
+            }
+            "nick_name" -> {
+                currentFragment = NickNameFragment()
+            }
+
         }
 
         val trans = supportFragmentManager.beginTransaction()
