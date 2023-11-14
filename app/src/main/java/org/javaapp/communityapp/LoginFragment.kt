@@ -1,5 +1,6 @@
 package org.javaapp.communityapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -28,6 +29,12 @@ class LoginFragment : Fragment() {
         loginFragmentBinding.loginJoinbtn.setOnClickListener {
             val act = activity as MainActivity // 프래그먼트를 소유하고 있는 액티비티 추출 (메인 액티비티로 변환)
             act.fragmentController("join", true, true)
+        }
+
+        loginFragmentBinding.loginLoginbtn.setOnClickListener {
+            val boardMainIntent = Intent(requireContext(), BoardMainActivity::class.java)
+            startActivity(boardMainIntent) // 액티비티 시작
+            activity?.finish() // 현재 액티비티 종료
         }
 
         return loginFragmentBinding.root

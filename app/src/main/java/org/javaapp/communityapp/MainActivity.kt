@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import org.javaapp.communityapp.databinding.ActivityMainBinding
 
+
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityMainBinding
