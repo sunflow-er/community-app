@@ -45,6 +45,11 @@ class BoardMainFragment : Fragment() {
                     // 작업했음 -> true / 작업안했음 -> flase 반환
                     true
                 }
+                R.id.board_main_menu_write -> {
+                    val act = activity as BoardMainActivity
+                    act.fragmentController("board_write", true, true)
+                    true
+                }
                 else -> false
             }
 
