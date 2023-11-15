@@ -30,7 +30,6 @@ class BoardMainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
         boardMainFragmentBinding = FragmentBoardMainBinding.inflate(inflater)
         boardMainFragmentBinding.boardMainToolbar.title = "게시판 이름"
 
@@ -90,7 +89,8 @@ class BoardMainFragment : Fragment() {
         inner class ViewHolderClass(boardMainRecyclerItemBinding: BoardMainRecyclerItemBinding)
             : RecyclerView.ViewHolder(boardMainRecyclerItemBinding.root), View.OnClickListener {
             override fun onClick(v: View?) {
-
+                val act = activity as BoardMainActivity
+                act.fragmentController("board_read", true, true)
             }
         }
     }
