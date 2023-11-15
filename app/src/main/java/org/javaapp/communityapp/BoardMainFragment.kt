@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,11 @@ import org.javaapp.communityapp.databinding.FragmentBoardMainBinding
 class BoardMainFragment : Fragment() {
 
     lateinit var boardMainFragmentBinding : FragmentBoardMainBinding
+
+    val boardListData = arrayOf(
+        "전체글", "게시판 1", "게시판 2", "게시판 3", "게시판 4"
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -27,6 +33,23 @@ class BoardMainFragment : Fragment() {
 
         boardMainFragmentBinding = FragmentBoardMainBinding.inflate(inflater)
         boardMainFragmentBinding.boardMainToolbar.title = "게시판 이름"
+
+        boardMainFragmentBinding.boardMainToolbar.inflateMenu(R.menu.board_main_menu) // 툴바에 메뉴 인플레이트
+        boardMainFragmentBinding.boardMainToolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.board_main_menu_board_list -> {
+                    val boardListBuilder = AlertDialog.Builder(requireContext())
+                    boardListBuilder.setTitle("게시판 목록")
+                    boardListBuilder.setNegativeButton("취소", null)
+                    boardListBuilder.setItems(boardListData, null)
+                    boardListBuilder.show()
+                    // 작업했음 -> true / 작업안했음 -> flase 반환
+                    true
+                }
+                else -> false
+            }
+
+        }
 
         /*--------------------------------------------recycler View------------------------------------------------*/
         val boardMainRecyclerAdapter = BoardMainRecyclerAdapter()
